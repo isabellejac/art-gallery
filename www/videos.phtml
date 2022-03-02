@@ -1,0 +1,46 @@
+<!--TAB GALLERY VIDEOS-->
+<section class="gallery">
+	<div class="container">
+		<div>
+			<h1 class="title-gallery">Videos</h1>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="text-defil-videos">
+		<p class="text-defil">
+			Instead of a traditional book report, I decided to make videos that generate enthusiasm for a place, a city, a country, a moment with friends. An opportunity to be creative and share a story in a new way. <strong>Show my Videos with the Instagram link! ***</strong>&nbsp;
+		</p>
+		<p class="text-defil">
+			Instead of a traditional book report, I decided to make videos that generate enthusiasm for a place, a city, a country, a moment with friends. An opportunity to be creative and share a story in a new way. <strong>Show my Videos with the Instagram link! ***</strong>&nbsp;
+		</p>
+	</div>
+</section>
+<section class="gallery">
+	<div class="container">
+		<?php foreach($articles as $article): ?>
+		<div class="videos">
+			<div class="img-videos-right">
+				<?php if(!empty($article["media"])): ?>
+				<a href="https://www.instagram.com/estelle.jacob" target="_blank"><img src="img/<?=htmlentities($article["media"]) ?>" alt="<?=htmlentities($article["media"]) ?>"></a>
+				<?php else : ?>
+				<a href="https://www.instagram.com/estelle.jacob" target="_blank"><img src="img/REE.18.30.jpg" alt="<?=htmlentities($article["media"]) ?>"></a>
+				<?php endif; ?>
+			</div>
+			<div class ="text-videos">
+				<div>
+					<h3 class="text-videos-title"><?= htmlentities($article['titre']) ?></h3>
+				</div>
+				<div class="text-video-description">
+					<p>
+						<?= htmlentities($article['description']) ?>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div>
+			<hr>
+		</div>
+		<?php endforeach; ?>
+	</div>
+</section>

@@ -1,0 +1,40 @@
+<!--TAB GALLERY PICTURES-->
+<section class="gallery">
+	<div class="container">
+		<div>
+			<h1 class="title-gallery">Pictures</h1>
+		</div>
+		<?php foreach($articles as $article): ?>
+		<div>
+			<h2 class="title-pictures"><?= htmlentities($article['titre']) ?></h2>
+		</div>
+		<?php if(!empty(htmlentities($article["media"]))): ?>
+		<div class="media-pictures">
+			<div class="img-left">
+				<img src="img/<?=htmlentities($article["media"]) ?>" alt="<?=htmlentities($article["media"]) ?>"/>
+			</div>
+			<div class ="img-right">
+				<div class="text-pictures">
+					<p>
+						<?= htmlentities($article['description']) ?>
+					</p>
+				</div>
+				<div class="img-small-right">
+					<div class="img-small-right-1">
+						<img  src="img/<?=htmlentities($article["media"]) ?>" alt="<?=htmlentities($article["media"]) ?>"/>
+					</div>
+					<div class="img-small-right-2">
+						<img  src="img/<?=htmlentities($article["media"]) ?>" alt="<?=htmlentities($article["media"]) ?>"/>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php else : ?>
+		<img src="img/REEL.4.30.jpg" alt="<?=htmlentities($article["media"]) ?>"/>
+		<?php endif; ?>
+		<div>
+			<hr>
+		</div>
+		<?php endforeach; ?>
+	</div>
+</section>

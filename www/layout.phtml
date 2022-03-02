@@ -1,0 +1,131 @@
+<?php $adminController = new AdminController(); ?>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--Link-->
+		<!-- Google Font-->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Sarabun&display=swap" rel="stylesheet">
+		<!-- Font awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+		<!--Favicon-->
+		<link rel="apple-touch-icon" sizes="180x180" href="www/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="www/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="www/favicon/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+		<meta name="msapplication-TileColor" content="#da532c">
+		<meta name="theme-color" content="#ffffff">
+		<!--Jquery-->
+		<script  src="https://code.jquery.com/jquery-3.4.1.min.js"  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script>
+		<!--Style CSS-->
+		<link rel="stylesheet" href="www/css/normalize.css">
+		<link rel="stylesheet" href="www/css/style.css" type="text/css" />
+		<title>JO Anna Art Gallery</title>
+	</head>
+	<body>
+		<!--Header-->
+		<header>
+			<div class="container">
+			<a href="index.php?action=about"><img class="logoJA" src="img/logoJA.jpg" alt= "logoJA"></a>
+			<h2><a class="title-header" href="index.php?action=about">JO Anna Art Gallery</a></h2>
+			<!--Dynamic Administration section-->
+			<?php if($adminController->
+			isAdmin()==true): ?>
+			<div class="admin-connect">
+				<p class='title-admin'>
+					<a href="index.php?action=adminTabel">
+						Espace administrateur 
+						<?= $_SESSION["admin"] ?>
+					</a>
+				</p>
+				<div class="user">
+					<a href="index.php?action=deconnexion">Deconnexion</a>
+				</div>
+			</div>
+			<?php endif; ?>
+			<?php if($adminController->
+			isAdmin()==false): ?>
+			<div class="user">
+				<a href="index.php?action=admin"><i class="fas fa-user-cog"></i></a>
+			</div>
+			<?php endif; ?>
+			</div>
+		</header>
+		<!--Menu Bar-->
+		<nav class="menu">
+			<ul>
+				<li><a href="index.php?action=home">Home</a></li>
+				<li>
+					<a href="index.php?action=home">Art Gallery</a>
+					<ul>
+						<li><a href="index.php?action=pictures">Pictures</a></li>
+						<li><a href="index.php?action=videos">Videos</a></li>
+						<li><a href="index.php?action=drawing">Drawing</a></li>
+					</ul>
+				</li>
+				<li><a href="index.php?action=about">About</a></li>
+				<li><a href="index.php?action=contact">Contact</a></li>
+			</ul>
+			</nav>
+		<!--Scroll to Top button-->
+		<div class="js-button active" id="click">
+			<i class="fas fa-chevron-circle-up"></i>
+		</div>
+		<main>
+			<!--Dynamic error or check message -->
+			<?php if(isset($error)): ?>
+			<p class="error">
+				<?= $error ?>
+			</p>
+			<?php endif; ?>
+			<?php require $template.'.phtml'; ?>
+		</main>
+		<!--Popup Instagram -->
+		<div class="js-popup">
+			<div class="open-popup">
+				<a href="https://www.instagram.com/estelle.jacob">Follow me! Subscribe with the link<i class="fa-brands fa-instagram-square"></i></a>
+				<button class="close-popup" id="close-popup">x</i></button>
+			</div>
+		</div>
+		<!--Footer-->
+		<footer>
+			<div class="container">
+				<div class="footer">
+				<div class="contact-footer">
+					<h3 class="contact-footer-h3"><a class="title-footer" href="index.php?action=about">JO Anna Art Gallery</a></h3>
+				</div>
+				<div class="contact-footer">
+					<h3 class="contact-footer-h3"><a href="index.php?action=contact">Contact :</h3></a>
+					<ul class="list-contact-footer">
+						<li><i class="fas fa-map-marker-alt"></i>Strasbourg-France</li>
+						<li><i class="fas fa-envelope"></i>stl@.com</li>
+						<li><i class="fas fa-mobile-alt"></i>06 07 08 09 10</li>
+					</ul>
+				</div>
+				<div class="contact-footer">
+					<h3 class="contact-footer-h3">Follow :</h3>
+					<span>
+						<a href="#"><i class="fab fa-facebook-square" target="_blank"></i></a>
+					</span>
+					<span>
+						<a href="https://www.instagram.com/estelle.jacob" target="_blank"><i class="fab fa-instagram-square"></i></a>
+					</span>
+					<span>
+						<a href="#"><i class="fab fa-pinterest-square" target="_blank"></i></a>
+					</span>
+				</div>
+				</div>
+			</div>
+		</footer>
+		<!--Script-->
+		<script type="text/javascript" src="www/js/popup.js"></script>
+		<script type="text/javascript" src="www/js/remove.js"></script>
+		<script type="text/javascript" src="www/js/script.js"></script>
+		<script type="text/javascript" src="www/js/scroll.js"></script>
+	</body>
+</html>

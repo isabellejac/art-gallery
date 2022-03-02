@@ -1,0 +1,35 @@
+<!--ADD AN ARTICLE IN THE DATABASE-->
+<?php if(isset($_SESSION['admin'])): ?>
+<section>
+	<div class="container">
+		<div class="form">
+			<form action="index.php?action=addArticle" method="post" enctype="multipart/form-data">
+				<fieldset>
+					<legend>
+						<i class="fas fa-camera-retro"></i>
+						Ajouter un nouvel article 
+					</legend>
+					<label for="categorie">Categorie</label>
+					<select class="form-details" name="idCategorie" id="idCategorie">
+						<option>Choisir une catégorie</option>
+						<?php foreach ($categories as $categorie):?>
+						<option value="<?=htmlspecialchars($categorie["idCategorie"])?>"><?=htmlspecialchars($categorie["nomCategorie"]) ?></option>
+						<?php endforeach; ?>
+					</select>
+					<label for="titleArticle">Titre</label>
+					<input class="form-details" type="text" name="titleArticle" id="titleArticle">
+					<label for="article">Article</label>
+					<textarea class="form-details-msg" name="contenu" rows="10" cols="50"></textarea>
+					<label for="media">Photos/Vidéos/Dessins</label>
+					<input class="form-details" type="file" name="media" id="media" accept=".jpeg, .png, .gif, .jpg">
+					<div class="button">
+						<div class="buttons">
+							<input class="connexion-button" type="submit" value="Ajouter">
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</section>
+<?php endif; ?>

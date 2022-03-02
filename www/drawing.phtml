@@ -1,0 +1,44 @@
+<!--TAB GALLERY DRAWING-->
+<section class="gallery">
+	<div class="slider">
+		<img id="slider">
+	</div>
+</section>
+<section class="gallery">
+	<div class="container">
+		<div class="title-drawing">
+			<h1 class="title-drawing-h1">Drawing</h1>
+			<p>
+				All my painting are spots according to my inspiration and produce with : Watercolor - Pencil - Acrylic. Watercolor for me is all about the transparency and glow that you can achieve with this media that is not possible with other forms of art.  With oil, you can build texture and add lights, with acrylic you can get the solid covering of a shape, but with watercolor, you can glaze layer upon layer and still have the luminosity and lacey edges.
+
+			</p>
+		</div>
+		<?php foreach($articles as $article): ?>
+		<?php if(!empty(htmlentities($article["media"]))): ?>
+		<div class="media-drawing">
+			<div class="img-drawing">
+				<div class="text-drawing">
+					<h3 class="text-img-drawing"><?= htmlentities($article['titre']) ?></h3>
+					<p class="text-img-drawing">
+						<?= htmlentities($article['description']) ?>
+					</p>
+				</div>
+				<div class="img-drawing-left">
+					<img src="img/<?=htmlentities($article["media"]) ?>" alt="<?=htmlentities($article["media"]) ?>"/>
+				</div>
+			</div>
+			<div class="img-drawing">
+				<div class="img-drawing-right">
+					<img  src="img/<?=htmlentities($article["media"]) ?>" alt="<?=htmlentities($article["media"]) ?>"/>
+				</div>
+			</div>
+		</div>
+		<?php else : ?>
+		<img src="img/REEL.4.30.jpg" alt="<?=htmlentities($article["media"]) ?>"/>
+		<?php endif; ?>
+		<div>
+			<hr>
+		</div>
+		<?php endforeach; ?>
+	</div>
+</section>

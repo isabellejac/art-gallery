@@ -1,0 +1,32 @@
+<!--TAB Contact-->
+<?php if(array_key_exists('errors', $_SESSION)): ?>
+<div class="error">
+	<?= implode($_SESSION ['errors']); ?>
+	<?php unset($_SESSION ['errors']); echo $check; endif; ?>
+</div>
+<section>
+	<div class="container">
+		<div class="form">
+			<form action="index.php?action=contact" method="post">
+				<fieldset>
+					<legend>
+						<i class="far fa-file-alt"></i>
+						Contact
+					</legend>
+					<label for="name">Name</label>
+					<input class="form-details" type="text" placeholder="Your name" name="name" id="focus" minlength="3" maxlength="30">
+					<label for="firstname">First Name</label>
+					<input class="form-details" type="text" placeholder="Your First name" name="firstname" id="firstname" minlength="3" maxlength="30">
+					<label for="email">Email</label>
+					<input class="form-details" type="email" placeholder="your@email.xxx" name="email" minlength="3" maxlength="30" id="email" multiple>
+					<label for="message">Your message</label>
+					<textarea class="form-details-msg" type="message" name="message" id="message" minlength="3" maxlength="300" ></textarea>
+					<div class="button">
+						<div class="buttons">
+							<input class="connexion-button" type="submit" value="Let's talk">
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+	</section>

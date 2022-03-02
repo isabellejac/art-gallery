@@ -1,0 +1,97 @@
+<!--HOME ADMINISTRATION - MANAGEMENT ADD ARTICLE- MODIFY ARTICLE - REMOVE ARTICLE-->
+<?php if($this ->
+ isAdmin()==false): ?>
+<form action="index.php?action=admin" method="post">
+	<section>
+		<div class="container">
+			<fieldset>
+				<legend class="form">
+					<i class="far fa-file-alt"></i>
+					Mon compte
+				</legend>
+				<label for="pseudo">Votre pseudo</label>
+				<input class="form-details" type="text" name="pseudo" id="pseudo" placeholder="Your pseudo" minlength="3" maxlength="10" reequired>
+				<label for="password">Mot de passe</label>
+				<input class="form-details" type="password" name="password" id="password" placeholder="Your password" minlength="3" maxlength="12" required>
+				<div class="button">
+					<div class="buttons">
+						<input class="connexion-button" type="submit" value="Connexion" />
+					</div>
+				</div>
+			</fieldset>
+		</div>
+	</section>
+</form>
+<?php else: ?>
+<section class="medias">
+	<div class="container">
+		<div class="admin">
+			<h3 class="admin-h3">Administration</h3>
+		</div>
+		<div class="list-article">
+			<form action="index.php?action=addArticle" method="post" enctype="multipart/form-data">
+				<p class="submit-admin" type="submit">
+					<a href="index.php?action=addArticle">Ajouter un nouvel article</a>
+				</p>
+			</div>
+			<table class="tabel">
+				<thead>
+					<caption class"titleTabel">
+						Liste des articles
+					</caption>
+					<?php if(isset($_GET['error'])): ?>
+					<p class="error">
+						<?= $_GET['error'] ?>
+					</p>
+					<?php endif;?>
+				</thead>
+				<tbody>
+					<tr>
+						<th class="tabtitle">
+							Titre
+						</th>
+						<th class="tabtitle">
+							Description
+						</th>
+						<th class="tabtitle">
+							Catégorie
+						</th>
+						<th class="tabtitle">
+							Médias
+						</th>
+						<th class="tabtitle">
+							Modifier
+						</th>
+						<th class="tabtitle">
+							Supprimer
+						</th>
+					</tr>
+					<?php foreach($articles as $article): ?>
+					<tr>
+						<td class="tabcolumn">
+							<?= htmlentities($article["titre"]) ?>
+						</td>
+						<td class="tabcolumn">
+							<?= substr(htmlentities($article["description"]),0,45)?>
+							[...]
+						</td>
+						<td class="tabcolumn">
+							<?= htmlentities($article["idCategorie"]) ?>
+						</td>
+						<td class="tabcolumn">
+							<?= htmlentities($article["media"]) ?>
+						</td>
+						<td class="tabcolumn">
+							<a href="index.php?action=modifyArticle&idArticle=<?= htmlentities($article["idArticle"]) ?>" class="modify-article"><i class="fas fa-pen"></i></a>
+						</td>
+						<td class="tabcolumn">
+							<a href="index.php?action=deleteArticle&idArticle=<?= htmlentities($article["idArticle"]) ?>" class="remove-article"><i class="fas fa-times"></i></a>
+						</td>
+					</tr>
+					<?php endforeach; ?>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
