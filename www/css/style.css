@@ -19,7 +19,8 @@ body
 	font-family: 'Sarabun', sans-serif;
 	font-size: 1.8rem;
 	background-color: rgb(51,51,51);
-	}
+	background-color: red;
+}
 /**********************CONTAINER***********************/
 .container
 {
